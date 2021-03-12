@@ -1,11 +1,3 @@
-# MongoFramework
-An "Entity Framework"-like interface for MongoDB
-
-[![AppVeyor](https://img.shields.io/appveyor/ci/Turnerj/mongoframework/master.svg)](https://ci.appveyor.com/project/Turnerj/mongoframework)
-[![Codecov](https://img.shields.io/codecov/c/github/turnersoftware/mongoframework/master.svg)](https://codecov.io/gh/TurnerSoftware/MongoFramework)
-[![NuGet](https://img.shields.io/nuget/v/MongoFramework.svg)](https://www.nuget.org/packages/MongoFramework/)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/62fa31c90bf94f3d8e201b9684a7a4ca)](https://www.codacy.com/app/Turnerj/MongoFramework)
-
 ## Overview
 MongoFramework tries to bring some of the nice features from Entity Framework into the world of MongoDB.
 
@@ -15,18 +7,12 @@ Some of the major features include:
 - Entity change tracking
 - Changeset support (allowing for queuing multiple DB updates to run at once)
 - Diff-updates (only _changes_ to an entity to be written)
-- Entity Buckets (clustering of small documents together, [improving index performance](https://www.mongodb.com/blog/post/building-with-patterns-the-bucket-pattern))
 - Runtime type discovery (serialize and deserialize without needing to specify every "known" type)
 
 MongoFramework is currently built on-top of the official MongoDB C# driver.
 
 ## Extensions
 These extensions are official packages that enhance the functionality of MongoFramework, integrating it with other systems and tools.
-
-### MongoFramework.Profiling.MiniProfiler
-[![NuGet](https://img.shields.io/nuget/v/MongoFramework.Profiling.MiniProfiler.svg)](https://www.nuget.org/packages/MongoFramework.Profiling.MiniProfiler/)
-
-Supports profiling database reads and writes, pushing the data into [MiniProfiler](https://github.com/MiniProfiler/dotnet/).
 
 ## Documentation
 
@@ -56,19 +42,9 @@ public class IndexExample
 }
 ```
 
-The following variations of indexes are supported across various property types:
-- [Single field](https://docs.mongodb.com/manual/core/index-single/)
-- [Compound](https://docs.mongodb.com/manual/core/index-compound/#compound-indexes)
-- [Multikey indexes](https://docs.mongodb.com/manual/core/index-multikey/)
-
 To support compound indexes, define indexes with the same name across multiple properties.
 When doing this, you will want to control the order of the individual items in the compound index which is available through the `IndexPriority` property on the attribute. 
 
-#### Special Index Types
-MongoFramework supports [Text](https://docs.mongodb.com/manual/core/index-text/) and [2dSphere](https://docs.mongodb.com/manual/core/2dsphere/) special indexes.
-These special index types are selected through the `IndexType` property on the Index attribute.
-
-Please consult MongoDB's documentation on when the indexes are appropriate and their restrictions.
 
 ### Contexts and Connections
 Like Entity Framework, MongoFramework is built around contexts - specifically the `MongoDbContext`.
